@@ -1,17 +1,12 @@
 const express = require('express');
 const debug = require('debug')('app:startup');
-const config = require('config');
 require('dotenv').config();
 const app = express();
 
 require('./startup/logging.js');
 require('./startup/routes.js')(app);
-require('./startup/db.js');
-
-if (!config.get('jwtPrivateKey')) {
-    console.error('FATAL ERROR: jwtPrivatKey is not defined');
-    process.exit(1);
-}
+require('./startup/db.js')();
+require('./startup/config.js')();
 
 app.use(express.json());
 
