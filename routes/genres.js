@@ -5,7 +5,6 @@ const { Genre, validate } = require('../models/genre');
 const authMiddleware = require('../middleware/auth');
 
 router.get('/', async (req, res) => {
-    throw new Error('Could not get the genres');
     let genres = await Genre.find().sort({ name: 1 });
     res.send(JSON.stringify(genres));
 });
