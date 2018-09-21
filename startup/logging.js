@@ -1,4 +1,5 @@
 const winston = require('winston');
+const debug = require('debug')('app:startup');
 require('winston-mongodb');
 require('express-async-errors');
 
@@ -6,6 +7,7 @@ module.exports = function() {
     process.on('uncaughtException', ex => {
         debug('WE GOT UNCAUGHT EXCEPTION');
         winston.error(ex.message, ex);
+        process.exit(1);
     });
 
     process.on('unhandledRejection', ex => {

@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 });
 
 function validate(user) {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    // const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     const schema = {
         email: Joi.string()
             .email()
